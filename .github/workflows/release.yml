@@ -17,21 +17,42 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - name: Checkout
+      - name: 
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js
+
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "lts/*"
-          cache: 'pnpm'
+          node-version: 16
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.osCheckout }}-pnpm-store-
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Audit packages
         run: pnpm audit --fix
+
       - name: Build
         run: pnpm build
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
