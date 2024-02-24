@@ -12,14 +12,17 @@ yarn add @nicorickert/ui-library
 
 ## Usage
 
-Tree shaking is supported, so you can import only the components you need, and keep the rest out of your bundle.
+[Tree shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) is supported, so you can import only the components you need, and keep the rest out of your bundle.
+To use the styles of the components, you need to import the `@nicorickert/ui-library/dist/styles.css` file in your root file.
 
 ```jsx
 import React from 'react'
+
 import { Button } from '@nicorickert/ui-library'
+import '@nicorickert/ui-library/dist/styles.css'
 
 const App = () => {
-    return <Button text="Click me" />
+    return <Button>Click me</Button>
 }
 ```
 
@@ -41,4 +44,4 @@ npm run test
 
 ## License
 
-Licensed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
+Licensed under the MIT License. See [LICENSE](LICENSE) for more information.

@@ -6,6 +6,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:storybook/recommended',
         'plugin:prettier/recommended',
+        'plugin:jsx-a11y/recommended',
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs', '!.storybook'],
     parser: '@typescript-eslint/parser',
@@ -13,7 +14,11 @@ module.exports = {
         ecmaVersion: 12,
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint', 'eslint-plugin-simple-import-sort'],
+    plugins: [
+        '@typescript-eslint',
+        'eslint-plugin-simple-import-sort',
+        'jsx-a11y'
+    ],
     rules: {
         'react/react-in-jsx-scope': 'off',
         'simple-import-sort/imports': [
