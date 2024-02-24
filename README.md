@@ -15,12 +15,12 @@ yarn add @nicorickert/ui-library
 Tree shaking is supported, so you can import only the components you need, and keep the rest out of your bundle.
 
 ```jsx
-import React from 'react';
-import { Button } from '@nicorickert/ui-library';
+import React from 'react'
+import { Button } from '@nicorickert/ui-library'
 
 const App = () => {
-  return <Button text="Click me" />;
-};
+    return <Button text="Click me" />
+}
 ```
 
 ## Development
@@ -34,6 +34,7 @@ npm run storybook
 ## Testing
 
 Powered by [Vitest](https://vitest.dev/) and [Testing Library](https://testing-library.com/).
+
 ```bash
 npm run test
 ```
@@ -41,5 +42,3 @@ npm run test
 ## License
 
 Licensed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
-
-
