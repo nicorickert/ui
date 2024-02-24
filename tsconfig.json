@@ -13,7 +13,7 @@
         "skipLibCheck": false,
         "esModuleInterop": false,
         "allowSyntheticDefaultImports": true,
-        "moduleResolution": "Node",
+        "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "jsx": "react-jsxdev",
         "isolatedModules": true,
@@ -26,7 +26,7 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src"],
+    "include": ["src", "tests"],
     "references": [
         {
             "path": "./tsconfig.node.json"

@@ -1,14 +1,18 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-import { peerDependencies, dependencies } from './package.json'
 import react from '@vitejs/plugin-react-swc'
+import { glob } from 'glob'
+import { fileURLToPath } from 'node:url'
+import { extname, relative, resolve } from 'path'
+import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+
+import { dependencies, peerDependencies } from './package.json'
 
 export default defineConfig({
     plugins: [
         react(),
         dts({
             include: ['src/**/*'],
+            exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'],
         }),
     ],
     build: {
@@ -25,6 +29,20 @@ export default defineConfig({
                 ...Object.keys(peerDependencies),
                 ...Object.keys(dependencies),
             ],
+            input: Object.fromEntries(
+                glob
+                    .sync('src/**/*.{ts,tsx}', {
+                        ignore: ['**/*.stories.tsx', '**/*.test.tsx'],
+                    })
+                    .map((file) => [
+                        // The name of the entry point
+                        // src/nested/foo.ts becomes nested/foo
+                        relative('src', file.slice(0, file.length - extname(file).length)),
+                        // The absolute path to the entry file
+                        // src/nested/foo.ts becomes /project/lib/nested/foo.ts
+                        fileURLToPath(new URL(file, import.meta.url)),
+                    ]),
+            ),
             output: {
                 preserveModules: true,
                 exports: 'named',

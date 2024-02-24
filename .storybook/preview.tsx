@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Preview } from '@storybook/react'
+
 import '../src/index.css'
 
 const preview: Preview = {
@@ -11,10 +12,11 @@ const preview: Preview = {
                 date: /Date$/i,
             },
         },
+        layout: 'fullscreen',
     },
     decorators: [
         (Story) => (
-            <div className="flex items-center justify-center">
+            <div className="dark flex h-screen items-center justify-center p-4">
                 <Story />
             </div>
         ),
