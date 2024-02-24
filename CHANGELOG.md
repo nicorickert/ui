@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/nicorickert/ui/compare/v1.0.0...v1.0.1) (2024-02-24)
+
+
+### Bug Fixes
+
+* update package version ([6b899be](https://github.com/nicorickert/ui/commit/6b899bec004017570924f80bc8e99aa779370336))
+
 # 1.0.0 (2024-02-24)
 
 
