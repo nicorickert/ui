@@ -3,8 +3,8 @@ import tailwindscssAnimate from 'tailwindcss-animate'
 
 export default {
     darkMode: ['class'],
-    safelist: ['dark'],
-    content: ['./src/components/**/*.{ts,tsx}'],
+    safelist: ['light'],
+    content: ['.storybook/preview.tsx', './src/components/**/*.{ts,tsx}'],
     prefix: '',
     theme: {
         container: {

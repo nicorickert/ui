@@ -12,11 +12,25 @@ const preview: Preview = {
                 date: /Date$/i,
             },
         },
+        backgrounds: {
+            default: 'dark',
+            values: [
+                {
+                    name: 'light',
+                    className: 'light',
+                    value: 'hsl(var(--foreground))',
+                },
+                {
+                    name: 'dark',
+                    value: 'hsl(var(--background))',
+                },
+            ],
+        },
         layout: 'fullscreen',
     },
     decorators: [
         (Story) => (
-            <div className="dark flex h-screen items-center justify-center p-4">
+            <div className="flex h-screen items-center justify-center">
                 <Story />
             </div>
         ),

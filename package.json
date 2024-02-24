@@ -27,7 +27,7 @@
         "semantic-release": "semantic-release",
         "lint": "eslint --ext .ts,.tsx src/ --fix --max-warnings 0",
         "format": "prettier --write .",
-        "test": "vitest run",
+        "test": "vitest run .",
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage",
         "storybook": "storybook dev -p 6006",
@@ -79,6 +79,7 @@
         "lint-staged": ">=10",
         "postcss": "^8.4.35",
         "postcss-cli": "^11.0.0",
+        "postcss-minify": "^1.1.0",
         "prettier": "^3.2.5",
         "prettier-plugin-tailwindcss": "^0.5.11",
         "react": "18.2.0",
@@ -94,9 +95,9 @@
     },
     "lint-staged": {
         "*.{ts,tsx}": [
+            "pnpm test",
             "prettier --write",
-            "eslint --ext .ts,.tsx src/ --max-warnings 0",
-            "vitest run"
+            "eslint --ext .ts,.tsx src/ --max-warnings 0"
         ]
     }
 }
