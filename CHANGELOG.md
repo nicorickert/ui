@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/nicorickert/ui/compare/v1.0.1...v1.0.2) (2024-02-24)
+
+
+### Bug Fixes
+
+* add tailwindFunctions to enable prettier plugin ([771170f](https://github.com/nicorickert/ui/commit/771170fa1ccb579afbbe4640231889f25fa5dfc0))
+
 ## [1.0.1](https://github.com/nicorickert/ui/compare/v1.0.0...v1.0.1) (2024-02-24)
 
 ### Bug Fixes
