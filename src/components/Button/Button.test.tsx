@@ -23,7 +23,6 @@ describe('Button', () => {
 
         const button = screen.getByRole('button')
 
-        // expect(button.childNodes).includes('')
         expect(button).toHaveAttribute('disabled')
         expect(button).toHaveAttribute('aria-disabled')
         expect(button).toHaveAttribute('aria-busy')
