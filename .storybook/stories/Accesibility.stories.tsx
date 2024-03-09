@@ -17,8 +17,8 @@ export const Colors: Story = {
                 bg-secondary
             </div>
             <div className="flex h-32 w-32 items-center justify-center bg-card"> bg-card </div>
-            <div className="flex h-32 w-32 items-center justify-center bg-danger text-danger-foreground">
-                bg-danger
+            <div className="flex h-32 w-32 items-center justify-center bg-destructive text-destructive-foreground">
+                bg-destructive
             </div>
             <div className="flex h-32 w-32 items-center justify-center border bg-background">
                 bg-background
@@ -27,8 +27,8 @@ export const Colors: Story = {
             <div className="flex h-32 w-32 items-center justify-center bg-card text-primary">
                 text-primary
             </div>
-            <div className="flex h-32 w-32 items-center justify-center bg-card text-danger">
-                text-danger
+            <div className="flex h-32 w-32 items-center justify-center bg-card text-destructive">
+                text-destructive
             </div>
         </div>
     ),

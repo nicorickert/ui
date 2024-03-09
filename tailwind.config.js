@@ -33,9 +33,9 @@ export default {
                     DEFAULT: 'hsl(var(--secondary))',
                     foreground: 'hsl(var(--secondary-foreground))',
                 },
-                danger: {
-                    DEFAULT: 'hsl(var(--danger))',
-                    foreground: 'hsl(var(--danger-foreground))',
+                destructive: {
+                    DEFAULT: 'hsl(var(--destructive))',
+                    foreground: 'hsl(var(--destructive-foreground))',
                 },
                 muted: {
                     DEFAULT: 'hsl(var(--muted))',
