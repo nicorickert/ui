@@ -4,7 +4,11 @@ import tailwindscssAnimate from 'tailwindcss-animate'
 export default {
     darkMode: ['class'],
     safelist: ['light'],
-    content: ['.storybook/preview.tsx', './src/components/**/*.{ts,tsx}'],
+    content: [
+        '.storybook/preview.tsx',
+        '.storybook/stories/*.stories.tsx',
+        './src/components/**/*.{ts,tsx}',
+    ],
     prefix: '',
     theme: {
         container: {
@@ -29,9 +33,9 @@ export default {
                     DEFAULT: 'hsl(var(--secondary))',
                     foreground: 'hsl(var(--secondary-foreground))',
                 },
-                destructive: {
-                    DEFAULT: 'hsl(var(--destructive))',
-                    foreground: 'hsl(var(--destructive-foreground))',
+                danger: {
+                    DEFAULT: 'hsl(var(--danger))',
+                    foreground: 'hsl(var(--danger-foreground))',
                 },
                 muted: {
                     DEFAULT: 'hsl(var(--muted))',

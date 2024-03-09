@@ -15,3 +15,10 @@ export const Default: Story = {
         children: 'My button',
     },
 }
+
+export const Disabled: Story = {
+    args: {
+        children: "You can't click me",
+        disabled: true,
+    },
+}
