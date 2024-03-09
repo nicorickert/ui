@@ -1,7 +1,7 @@
 import React from 'react'
-import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 
+import { LoadingSpinner } from '@/components/LoadingSpinner/LoadingSpinner'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
@@ -35,19 +35,42 @@ const buttonVariants = cva(
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
         VariantProps<typeof buttonVariants> {
-    asChild?: boolean
+    loading?: boolean
+    loaderComponent?: React.ReactNode
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant = 'default', size = 'default', asChild = false, ...props }, ref) => {
-        const Comp = asChild ? Slot : 'button'
+    (
+        {
+            children,
+            className,
+            variant = 'default',
+            size = 'default',
+            disabled = false,
+            loading = false,
+            loaderComponent = <LoadingSpinner />,
+            ...props
+        },
+        ref,
+    ) => {
         return (
-            <Comp
+            <button
                 className={cn(buttonVariants({ variant, size, className }))}
                 ref={ref}
-                aria-disabled={props.disabled}
+                aria-busy={loading}
+                aria-disabled={disabled || loading}
+                disabled={disabled || loading}
                 {...props}
-            />
+            >
+                <>
+                    <span className={cn('opacity-100 transition-opacity', loading && 'opacity-0')}>
+                        {children}
+                    </span>
+                    <span className={cn('absolute opacity-0', loading && 'opacity-100')}>
+                        {loaderComponent}
+                    </span>
+                </>
+            </button>
         )
     },
 )

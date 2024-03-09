@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { Button } from '@/components/Button/Button'
+import { Button } from './Button'
 
 describe('Button', () => {
     it('should render the button', () => {
@@ -16,5 +16,19 @@ describe('Button', () => {
 
         expect(button).toHaveAttribute('disabled')
         expect(button).toHaveAttribute('aria-disabled')
+    })
+
+    it('should have loading state if loading prop is given', () => {
+        const { container } = render(<Button loading>I'm loading</Button>)
+
+        const button = screen.getByRole('button')
+
+        // expect(button.childNodes).includes('')
+        expect(button).toHaveAttribute('disabled')
+        expect(button).toHaveAttribute('aria-disabled')
+        expect(button).toHaveAttribute('aria-busy')
+
+        const spinner = container.querySelector('[data-icon="spinner"]')
+        expect(spinner).toBeInTheDocument()
     })
 })
