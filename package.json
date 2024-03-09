@@ -98,7 +98,7 @@
         "*.{ts,tsx}": [
             "pnpm test",
             "prettier --write",
-            "eslint --ext .ts,.tsx src/ --max-warnings 0"
+            "eslint --ext .ts,.tsx --max-warnings 0"
         ]
     }
 }
