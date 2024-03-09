@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/nicorickert/ui/compare/v1.0.2...v1.0.3) (2024-03-09)
+
+
+### Bug Fixes
+
+* rename danger to destructive because conflicts on linter ([b312ab2](https://github.com/nicorickert/ui/commit/b312ab2a9422cb941d88d9aa56f7d512eec84cb9))
+
 ## [1.0.2](https://github.com/nicorickert/ui/compare/v1.0.1...v1.0.2) (2024-02-24)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@nicorickert/ui",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A UI library for React made with Vite, Tailwind CSS, Shadcn components",
     "author": "Nico Rickert <nicorickert13@gmail.com>",
     "private": false,
