@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/nicorickert/ui/compare/v1.0.3...v1.0.4) (2024-03-12)
+
+
+### Bug Fixes
+
+* export LoadingSpinner ([a1ed57a](https://github.com/nicorickert/ui/commit/a1ed57a0e6116defd33b16b5ad039dafc9ba62e3))
+
 ## [1.0.3](https://github.com/nicorickert/ui/compare/v1.0.2...v1.0.3) (2024-03-09)
 
 
