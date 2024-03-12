@@ -6,6 +6,13 @@ export default {
     component: Input,
     tags: ['autodocs'],
     argTypes: {},
+    render: (args: InputProps) => {
+        return (
+            <div className="w-full max-w-80">
+                <Input {...args} />
+            </div>
+        )
+    },
 }
 
 type Story = StoryObj<InputProps>
