@@ -1,3 +1,4 @@
+import { createRef } from 'react'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -10,12 +11,19 @@ describe('Button', () => {
     })
 
     it('should have disabled and aria-disabled prop if disabled prop is given', () => {
-        render(<Button disabled>I'm disabled</Button>)
+        const onClick = vi.fn()
+        render(
+            <Button disabled onClick={onClick}>
+                I'm disabled
+            </Button>,
+        )
 
         const button = screen.getByRole('button')
 
         expect(button).toHaveAttribute('disabled')
         expect(button).toHaveAttribute('aria-disabled')
+        button.click()
+        expect(onClick).not.toHaveBeenCalled()
     })
 
     it('should have loading state if loading prop is given', () => {
@@ -45,5 +53,12 @@ describe('Button', () => {
     it('should have the given className', () => {
         render(<Button className="bg-red-500">Click me</Button>)
         expect(screen.getByRole('button')).toHaveClass('bg-red-500')
+    })
+
+    it('should have the given ref', () => {
+        const ref = createRef<HTMLButtonElement>()
+        render(<Button ref={ref} />)
+        const button = screen.getByRole('button')
+        expect(ref.current).toBe(button)
     })
 })

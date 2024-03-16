@@ -50,14 +50,21 @@ describe('Input', () => {
     })
 
     it('should be disabled if disabled prop is given', () => {
+        const onChange = vi.fn()
         render(<Input disabled />)
-        expect(screen.getByRole('textbox')).toBeDisabled()
+
+        const input = screen.getByRole('textbox')
+        expect(input).toBeDisabled()
+
+        userEvent.type(input, 'Hello')
+        expect(onChange).not.toHaveBeenCalled()
     })
 
     it('should have the given ref', () => {
         const ref = createRef<HTMLInputElement>()
         render(<Input ref={ref} />)
-        expect(ref.current).toBeInstanceOf(HTMLInputElement)
+        const input = screen.getByRole('textbox')
+        expect(ref.current).toBe(input)
     })
 
     it('should have the given id', () => {
