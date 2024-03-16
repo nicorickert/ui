@@ -1,7 +1,7 @@
 import { createRef } from 'react'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { Input } from './Input'
 
@@ -23,6 +23,14 @@ describe('Input', () => {
         expect(input).toHaveValue('Hello')
         await userEvent.clear(input)
         expect(input).toHaveValue('')
+    })
+
+    it('should call onChange function when value changes', async () => {
+        const onChange = vi.fn()
+        render(<Input onChange={onChange} />)
+        const input = screen.getByRole('textbox')
+        await userEvent.type(input, 'Hello')
+        expect(onChange).toHaveBeenCalledTimes(5)
     })
 
     it('should have the given value', () => {

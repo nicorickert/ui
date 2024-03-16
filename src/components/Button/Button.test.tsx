@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { Button } from './Button'
 
@@ -29,5 +29,21 @@ describe('Button', () => {
 
         const spinner = container.querySelector('[data-icon="spinner"]')
         expect(spinner).toBeInTheDocument()
+    })
+
+    it('should call onClick function when clicked', () => {
+        const onClick = vi.fn()
+        render(<Button onClick={onClick}>Click me</Button>)
+
+        const button = screen.getByRole('button')
+
+        button.click()
+
+        expect(onClick).toHaveBeenCalledTimes(1)
+    })
+
+    it('should have the given className', () => {
+        render(<Button className="bg-red-500">Click me</Button>)
+        expect(screen.getByRole('button')).toHaveClass('bg-red-500')
     })
 })
