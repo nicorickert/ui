@@ -1,4 +1,5 @@
 import { createRef } from 'react'
+import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -20,17 +21,23 @@ describe('Checkbox', () => {
     it('should change value when clicked', () => {
         render(<Checkbox />)
         const checkbox = screen.getByRole('checkbox')
-        checkbox.click()
-        expect(checkbox).toBeChecked()
-        checkbox.click()
-        expect(checkbox).not.toBeChecked()
+        act(() => {
+            checkbox.click()
+        })
+        expect(checkbox).toHaveAttribute('data-state', 'checked')
+        act(() => {
+            checkbox.click()
+        })
+        expect(checkbox).toHaveAttribute('data-state', 'unchecked')
     })
 
     it('should call onChange function when value changes', () => {
         const onChange = vi.fn()
-        render(<Checkbox onChange={onChange} />)
+        render(<Checkbox onCheckedChange={onChange} />)
         const checkbox = screen.getByRole('checkbox')
-        checkbox.click()
+        act(() => {
+            checkbox.click()
+        })
         expect(onChange).toHaveBeenCalledTimes(1)
     })
 
@@ -42,12 +49,14 @@ describe('Checkbox', () => {
 
     it('should be disabled if disabled prop is given and onChange should not be called', () => {
         const onChange = vi.fn()
-        render(<Checkbox disabled onChange={onChange} />)
+        render(<Checkbox disabled onCheckedChange={onChange} />)
 
         const checkbox = screen.getByRole('checkbox')
         expect(checkbox).toBeDisabled()
 
-        checkbox.click()
+        act(() => {
+            checkbox.click()
+        })
         expect(onChange).not.toHaveBeenCalled()
     })
 
@@ -58,7 +67,7 @@ describe('Checkbox', () => {
     })
 
     it('should have the given ref', () => {
-        const ref = createRef<HTMLInputElement>()
+        const ref = createRef<HTMLButtonElement>()
         render(<Checkbox ref={ref} />)
         const checkbox = screen.getByRole('checkbox')
         expect(ref.current).toBe(checkbox)
