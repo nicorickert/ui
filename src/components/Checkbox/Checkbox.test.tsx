@@ -24,16 +24,16 @@ describe('Checkbox', () => {
         act(() => {
             checkbox.click()
         })
-        expect(checkbox).toHaveAttribute('data-state', 'checked')
+        expect(checkbox).toBeChecked()
         act(() => {
             checkbox.click()
         })
-        expect(checkbox).toHaveAttribute('data-state', 'unchecked')
+        expect(checkbox).not.toBeChecked()
     })
 
     it('should call onChange function when value changes', () => {
         const onChange = vi.fn()
-        render(<Checkbox onCheckedChange={onChange} />)
+        render(<Checkbox onChange={onChange} />)
         const checkbox = screen.getByRole('checkbox')
         act(() => {
             checkbox.click()
@@ -49,7 +49,7 @@ describe('Checkbox', () => {
 
     it('should be disabled if disabled prop is given and onChange should not be called', () => {
         const onChange = vi.fn()
-        render(<Checkbox disabled onCheckedChange={onChange} />)
+        render(<Checkbox disabled onChange={onChange} />)
 
         const checkbox = screen.getByRole('checkbox')
         expect(checkbox).toBeDisabled()
@@ -61,13 +61,13 @@ describe('Checkbox', () => {
     })
 
     it('should have the given className', () => {
-        render(<Checkbox className="bg-red-500" />)
-        const checkbox = screen.getByRole('checkbox')
-        expect(checkbox).toHaveClass('bg-red-500')
+        const { container } = render(<Checkbox className="bg-red-500" />)
+        const label = container.querySelector('label')
+        expect(label).toHaveClass('bg-red-500')
     })
 
     it('should have the given ref', () => {
-        const ref = createRef<HTMLButtonElement>()
+        const ref = createRef<HTMLInputElement>()
         render(<Checkbox ref={ref} />)
         const checkbox = screen.getByRole('checkbox')
         expect(ref.current).toBe(checkbox)
