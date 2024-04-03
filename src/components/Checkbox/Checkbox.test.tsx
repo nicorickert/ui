@@ -1,5 +1,4 @@
 import { createRef } from 'react'
-import { act } from 'react-dom/test-utils'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -21,13 +20,11 @@ describe('Checkbox', () => {
     it('should change value when clicked', () => {
         render(<Checkbox />)
         const checkbox = screen.getByRole('checkbox')
-        act(() => {
-            checkbox.click()
-        })
+
+        checkbox.click()
         expect(checkbox).toBeChecked()
-        act(() => {
-            checkbox.click()
-        })
+
+        checkbox.click()
         expect(checkbox).not.toBeChecked()
     })
 
@@ -35,9 +32,9 @@ describe('Checkbox', () => {
         const onChange = vi.fn()
         render(<Checkbox onChange={onChange} />)
         const checkbox = screen.getByRole('checkbox')
-        act(() => {
-            checkbox.click()
-        })
+
+        checkbox.click()
+
         expect(onChange).toHaveBeenCalledTimes(1)
     })
 
@@ -54,9 +51,8 @@ describe('Checkbox', () => {
         const checkbox = screen.getByRole('checkbox')
         expect(checkbox).toBeDisabled()
 
-        act(() => {
-            checkbox.click()
-        })
+        checkbox.click()
+
         expect(onChange).not.toHaveBeenCalled()
     })
 
